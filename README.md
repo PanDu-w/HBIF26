@@ -1,2 +1,2 @@
-# HBIF26.github.io
+# HBIF26
 himpunan badminton informatika angkatan 26
