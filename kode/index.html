@@ -544,9 +544,9 @@
                         <h3><i class="fa-solid fa-user-gear" style="color: #3498db;"></i> Profil</h3>
                         <p>Cari tahu tentang pengembang website ini dan pengurus HBIF26.</p>
                     </div>
-                    <button onclick="switchView('profile')" class="button">
-                        <i class="fa-solid fa-circle-info"></i> Tentang Kami
-                    </button>
+                    <a class="button" href="profile.html">
+                        Tentang Kami
+                    </a>
                 </div>
             </div>
 
@@ -560,15 +560,17 @@
                         <i class="fa-solid fa-location-dot card-icon"></i>
                         <div>
                             <h4>Lokasi Latihan Rutin</h4>
-                            <p>Lapangan Fakultas Teknik Unsoed<br>Jl. Mayor Jend. DI Panjaitan, Blater, Purbalingga</p>
+                            <p>Rafello badminton dan King badminton</p>
                         </div>
                     </div>
 
                     <div class="info-card">
                         <i class="fa-brands fa-whatsapp card-icon"></i>
                         <div>
-                            <h4>WhatsApp Admin</h4>
-                            <p><a href="https://wa.me/6281234567890" target="_blank">+62 812-3456-7890 (Koordinator HBIF26)</a></p>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/6282323008033" target="_blank">+62-823-2300-8033 Raya</a></p>
+                            <p><a href="https://wa.me/6285842119486" target="_blank">+62-858-4211-9486 Pandu</a></p>
+                            <p><a href="https://wa.me/6281943503392" target="_blank">+62-819-4350-3392 Rafael</a></p>
                         </div>
                     </div>
 
@@ -576,7 +578,7 @@
                         <i class="fa-solid fa-envelope card-icon"></i>
                         <div>
                             <h4>Email Resmi</h4>
-                            <p>badminton.if26@unsoed.ac.id</p>
+                            <p>Belum ada</p>
                             <button class="button" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.8rem; margin-top: 8px;">
                                 <i class="fa-regular fa-copy"></i> Salin Email
                             </button>
@@ -585,73 +587,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- ========================================== -->
-        <!-- VIEW 2: TENTANG KAMI / PROFILE (profile.html) -->
-        <!-- ========================================== -->
-        <div id="view-profile" class="view-section">
-            <div style="margin-bottom: 20px;">
-                <button onclick="switchView('home')" class="button" style="background: var(--primary); color: var(--white);">
-                    <i class="fa-solid fa-arrow-left"></i> Home
-                </button>
-            </div>
-
-            <section class="hero-profile">
-                <h1>Kenali <span>HBIF26</span></h1>
-                <p>
-                    Himpunan Badminton Informatika 26.
-                    Wadah bagi mahasiswa untuk membangun kebersamaan,
-                    meningkatkan kemampuan olahraga, dan mempererat
-                    hubungan antaranggota melalui badminton.
-                </p>
-            </section>
-
-            <section class="about-section">
-                <h2 class="section-title">Tentang Kami</h2>
-                <p>
-                    HBIF26 merupakan komunitas badminton yang dibentuk
-                    sebagai tempat berkumpul bagi mahasiswa Informatika
-                    angkatan 2026 yang memiliki minat terhadap olahraga
-                    badminton. Melalui komunitas ini, kami ingin membangun
-                    lingkungan yang aktif, sportif, dan penuh solidaritas.
-                    Kami percaya bahwa olahraga dapat menjadi sarana
-                    untuk mempererat hubungan, mengembangkan kemampuan,
-                    serta menciptakan pengalaman bersama.
-                </p>
-            </section>
-
-            <section class="team-section">
-                <h2 class="section-title">Our Team</h2>
-                <p style="color: var(--muted);">Kenali orang-orang di balik HBIF26.</p>
-
-                <div class="team-container">
-                    <!-- Anggota 1 -->
-                    <div class="team-card">
-                        <div class="profile-photo">
-                            <i class="fa-solid fa-user-tie"></i>
-                        </div>
-                        <h3>Paduka Raya Nandana S.Kom</h3>
-                        <p class="role">Ketua Komunitas</p>
-                        <a href="https://instagram.com/" target="_blank" class="social-link">
-                            <i class="fa-brands fa-instagram"></i> Instagram
-                        </a>
-                    </div>
-
-                    <!-- Anggota 2 -->
-                    <div class="team-card">
-                        <div class="profile-photo">
-                            <i class="fa-solid fa-user-ninja"></i>
-                        </div>
-                        <h3>Fairuz Pandu Satria S.Teh</h3>
-                        <p class="role">Wakil Ketua</p>
-                        <a href="https://instagram.com/" target="_blank" class="social-link">
-                            <i class="fa-brands fa-instagram"></i> Instagram
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
     </div>
 
     <!-- TOAST NOTIFIKASI -->
@@ -708,25 +643,11 @@
                 });
             } else {
                 // Mockup default jika data sheet kosong
-                document.getElementById("loading").style.display = "none";
-                const tbody = document.getElementById("jadwalBody");
-                const defaultJadwal = [
-                    { tanggal: "Rabu, 4 Nov 2026", waktu: "16:00 - 18:00 WIB", tempat: "Lapangan FT Unsoed" },
-                    { tanggal: "Sabtu, 7 Nov 2026", waktu: "15:00 - 18:00 WIB", tempat: "Lapangan FT Unsoed" }
-                ];
-                defaultJadwal.forEach(item => {
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = `
-                        <td>${item.tanggal}</td>
-                        <td>${item.waktu}</td>
-                        <td>${item.tempat}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
+                document.getElementById("loading").innerHTML = "Belum ada jadwal main.";
             }
 
         }).catch(error => {
-            document.getElementById("loading").innerHTML = "Gagal memuat data live, menampilkan jadwal rutin.";
+            document.getElementById("loading").innerHTML = "Gagal memuat data live.";
             console.error(error);
         });
 
