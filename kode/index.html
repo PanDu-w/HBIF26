@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HBIF26</title>
+
+<style>
+:root{
+    --primary: #142638;
+    --accent: #a8e66c;
+    --bg: #f4f7f5;
+    --text: #1d2939;
+    --muted: #667085;
+    --white: #ffffff;
+    --border: #929292;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+.container{
+    width:min(1100px,90%);
+    margin:auto;
+}
+
+
+header{
+    background:var(--primary);
+    color:var(--white);
+    padding:80px 20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:3rem;
+    font-weight:700;
+}
+
+header p{
+    color:rgba(255,255,255,.8);
+    margin-top:12px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.card h2{
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.table-wrapper{
+    margin-top:32px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:var(--primary);
+    color:white;
+}
+
+th{
+    padding:16px;
+    text-align:left;
+}
+
+td{
+    padding:16px;
+    border-bottom:1px solid var(--border);
+}
+
+tbody tr:hover{
+    background:#f9fbfa;
+}
+
+.button{
+    display:inline-block;
+    background:var(--accent);
+    color:var(--primary);
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.button:hover{
+    transform:translateY(-2px);
+    filter:brightness(.95);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.info-item{
+    background:var(--card);
+    padding:20px;
+    border-radius:12px;
+    border:1px solid var(--border);
+}
+
+.info-item h3{
+    padding-bottom: 20px;
+}
+
+.info-item p{
+    padding-bottom: 10px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:var(--text-muted);
+}
+
+.loading{
+    text-align:center;
+    padding:20px;
+    color:var(--text-muted);
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>🏸 Himpunan Badminton Informatika 26</h1>
+    <p>informasi mabar dan Pengumuman lainnya terkait acara badminton</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Jadwal Mabar</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Waktu</th>
+                    <th>Tempat</th>
+                </tr>
+            </thead>
+            <tbody id="jadwalBody">
+            </tbody>
+        </table>
+        
+        <div class="loading" id="loading">
+            Memuat jadwal...
+        </div>
+    </div>
+
+    <div class="info-grid">
+
+        <div class="info-item">
+            <h3>📢 Pengumuman</h3>
+            <p id="text_pengumuman">
+                Pantau website secara berkala untuk jadwal mabar atau turnamen.
+            </p>
+        </div>
+
+        <div class="info-item">
+            <h3>👥 Grup Anggota</h3>
+            <p>Bergabung dengan grup WhatsApp komunitas.</p>
+
+            <a href="wkwk.html"
+               class="button">
+               Gabung Grup
+            </a>
+        </div>
+
+        <div class="info-item">
+            <h3>Profil</h3>
+            <p>Cari tahu tentang pengembang website ini</p>
+
+            <a href="wkwk.html"
+               class="button">
+               Tentang kami
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Himpunan Badminton Informatika
+</footer>
+
+<script>
+
+// Ganti dengan URL Publish CSV Google Sheets
+const API_URL = "https://script.google.com/macros/s/AKfycbwsZsdtX7kUlkxs930tRMqIy_8G_1g1tVSSFRzyOpu-WrF8Z_QyUzM3vSPhZoqphoLc/exec";
+fetch(API_URL).then(response => response.json()).then(data => {
+
+    if(data.pesan){
+        document.getElementById("text_pengumuman").innerHTML = `${data.pesan}`;
+    }
+    if(data.jadwal && data.jadwal.length != 0){
+        document.getElementById("loading").style.display = "none";
+
+        const tbody = document.getElementById("jadwalBody");
+
+
+        data.jadwal.forEach(item => {
+            const tr = document.createElement("tr");
+
+            tr.innerHTML =  `
+                            <td>${item.tanggal}</td>
+                            <td>${item.waktu}</td>
+                            <td>${item.tempat}</td>
+                            `;
+
+            tbody.appendChild(tr);
+
+    });
+    }else{
+        document.getElementById("loading").innerHTML = "Tidak ada jadwal main";
+    }
+
+}).catch(error => {
+    document.getElementById("loading").innerHTML = "Gagal memuat data";
+    console.error(error);
+});
+
+</script>
+
+</body>
+</html>
