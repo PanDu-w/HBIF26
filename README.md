@@ -7,7 +7,7 @@ Website profil komunitas Himpunan Badminton Informatika angkatan 2026. Website i
 
 * [Fairuz Pandu Satria] - [@PandDu-w]
 
-* [Raffael Saputra] - [@]
+* [Raffael Saputra] - [@welwing]
 
 ## Latar Belakang & Tujuan
 
@@ -39,10 +39,10 @@ git clone [https://github.com/PanDu-w/HBIF26.git](https://www.google.com/search?
 2. Masuk ke folder proyek:
 cd HBIF26
 
-3. Buka file halaman utama pada folder code atau kode menggunakan browser pilihan Anda[cite: 4, 10].
+3. Buka file halaman utama pada folder code atau kode menggunakan browser pilihan anda.
 
 ## Pembagian Tugas
 
-* [Raya Nandana]: Mengerjakan fitur navbar dan homepage section[cite: 2, 4, 11].
-* [Fairuz Pandu Satria]: Mengerjakan fitur halaman Profile[cite: 2, 3, 4].
-* [Raffael Saputra]: Mengerjakan fitur section contact dan struktur kode terkait[cite: 2, 4, 8].
+* [Raya Nandana]: Mengerjakan fitur navbar dan homepage section.
+* [Fairuz Pandu Satria]: Mengerjakan fitur halaman Profile.
+* [Raffael Saputra]: Mengerjakan fitur section contact dan struktur kode terkait.
